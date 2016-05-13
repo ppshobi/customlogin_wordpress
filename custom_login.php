@@ -8,4 +8,18 @@
  * Author URI: https://github.com/ppshobi
  * License: GPL2
  */
+
+add_action('admin_menu', 'wcl_dashboard_menu');
+
+function wcl_dashboard_menu() {
+	add_menu_page( 'Wordpress Custom Login', 'WP Custom Login', 'administrator', 'wcl-wp-login.php', 'wcl_blog_protection_dashboard', 'dashicons-admin-tools'  );
+}
+
+// add_filter('login_errors','wcl_login_error_message');
+
+// function wlc_login_error_message( $error ){
+//     $error = "Incorrect login information, stay out!";
+//     return $error;
+// }
+
 ?>
