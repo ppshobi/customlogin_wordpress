@@ -16,8 +16,25 @@ function wcl_dashboard_menu() {
 }
 
 function wcl_main_dashboard(){
+	if (isset($_POST['submit'])) {
+		$color=$_POST['color'];
+		if ($color) {
+			if(change_color($color))
+				echo "color changed";
+			else
+				echo "Color was not changed"
+		}
+	}else{
+		echo "No hello";
+	}
 	echo "<div>";
 	echo "<h1>Wordpress Custom Login Dashboard</h1>";
+	echo "</div>";
+	echo "<div class=\"wrap\">";
+	echo "<form action=\"\" method=\"POST\">";
+	echo "Background Color(use the hex)"."<input type=\"text\" name=\"color\" \/>";
+	echo "<input type=\"submit\" name=\"submit\" value=\"Save\">";
+	echo "</form>";
 	echo "</div>";
 	return true;
 }
