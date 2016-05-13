@@ -22,7 +22,7 @@ function wcl_main_dashboard(){
 			if(change_color($color))
 				echo "color changed";
 			else
-				echo "Color was not changed"
+				echo "Color was not changed";
 		}
 	}else{
 		echo "No hello";
@@ -38,7 +38,9 @@ function wcl_main_dashboard(){
 	echo "</div>";
 	return true;
 }
-
+function change_color($color){
+	return true;
+}
 // add_filter('login_errors','wcl_login_error_message');
 
 // function wlc_login_error_message( $error ){
