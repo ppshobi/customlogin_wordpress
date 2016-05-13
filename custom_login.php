@@ -12,7 +12,14 @@
 add_action('admin_menu', 'wcl_dashboard_menu');
 
 function wcl_dashboard_menu() {
-	add_menu_page( 'Wordpress Custom Login', 'WP Custom Login', 'administrator', 'wcl-wp-login.php', 'wcl_blog_protection_dashboard', 'dashicons-admin-tools'  );
+	add_menu_page( 'Wordpress Custom Login', 'WP Custom Login', 'administrator', 'wcl-wp-login.php', 'wcl_main_dashboard', 'dashicons-admin-tools'  );
+}
+
+function wcl_main_dashboard(){
+	echo "<div>";
+	echo "<h1>Wordpress Custom Login Dashboard</h1>";
+	echo "</div>";
+	return true;
 }
 
 // add_filter('login_errors','wcl_login_error_message');
