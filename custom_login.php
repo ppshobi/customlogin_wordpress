@@ -9,6 +9,17 @@
  * License: GPL2
  */
 
+//Loading the custom css file for the login page
+add_action( 'login_enqueue_scripts', 'wcl_login_css' );
+
+function wcl_login_css(){ 
+ wp_register_style( 'wcl_login_css',  plugin_dir_url( __FILE__ ) . 'css/wcl-wp-login.css' );
+   wp_enqueue_style('wcl_login_css');
+} 
+
+/* end of loading custom files */
+
+//adding menu item for the plugin page
 add_action('admin_menu', 'wcl_dashboard_menu');
 
 function wcl_dashboard_menu() {
@@ -41,14 +52,11 @@ function wcl_main_dashboard(){
 
 
 function change_color($color){
-add_action( 'login_enqueue_scripts', 'wcl_login_css' );
-return true;
+
+	var_dump(add_option( 'backgroundcolor', $color));
 }
-function wcl_login_css($color){ 
-    echo "<style type=\"text/css\">";
-    echo "body .login {background-color:#ccc;}";   
-    echo "</style>";
-} 
+
+
 
 
 // add_filter('login_errors','wcl_login_error_message');
