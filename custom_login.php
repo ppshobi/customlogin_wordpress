@@ -9,12 +9,23 @@
  * License: GPL2
  */
 
+//color picker for admin area
+function color_picker_assets($hook_suffix) {
+    // $hook_suffix to apply a check for admin page.
+    wp_enqueue_style( 'wp-color-picker' );
+    wp_enqueue_script( 'my-script-handle', plugins_url('js/wcl-admin.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
+}
+add_action( 'admin_enqueue_scripts', 'color_picker_assets' );
+
+
+
 //Loading the custom css file for the login page
+
 add_action( 'login_enqueue_scripts', 'wcl_login_css' );
 
 function wcl_login_css(){ 
- wp_register_style( 'wcl_login_css',  plugin_dir_url( __FILE__ ) . 'css/wcl-wp-login.css' );
-   wp_enqueue_style('wcl_login_css');
+ 	wp_register_style( 'wcl_login_css',  plugin_dir_url( __FILE__ ) . 'css/wcl-wp-login.css' );
+   	wp_enqueue_style('wcl_login_css');
 } 
 
 /* end of loading custom files */
@@ -28,22 +39,17 @@ function wcl_dashboard_menu() {
 
 function wcl_main_dashboard(){
 	if (isset($_POST['submit'])) {
-		$color=$_POST['color'];
-		if ($color) {
-			if(change_color($color))
-				echo "color changed";
-			else
-				echo "Color was not changed";
+		$bgcolor=$_POST['color'];
+		if ($bgcolor) {
+			echo $bgcolor;
 		}
-	}else{
-		echo "No hello";
 	}
 	echo "<div>";
 	echo "<h1>Wordpress Custom Login Dashboard</h1>";
 	echo "</div>";
 	echo "<div class=\"wrap\">";
 	echo "<form action=\"\" method=\"POST\">";
-	echo "Background Color(use the hex)"."<input type=\"text\" name=\"color\" \/>";
+	echo "<label for=\"background\">Background Color</label>:"."<input type=\"text\" class=\"wcl-bg-color\" value=\"#e9e9e9\" name=\"color\" \/>";
 	echo "<input type=\"submit\" name=\"submit\" value=\"Save\">";
 	echo "</form>";
 	echo "</div>";
